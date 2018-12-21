@@ -7,19 +7,19 @@ module Plectrum
         range.map(&base)
       end
 
-      def range
-        (0..4095)
-      end
-
       def base
         -> (i) { i.to_s(2) }
+      end
+
+      def range
+        (0..4095)
       end
 
       def find(number)
         unless range.include?(number)
           raise ArgumentError, 'Integer is not in range'
         end
-        number.to_s(2)
+        base.call(number)
       end
     end
   end
