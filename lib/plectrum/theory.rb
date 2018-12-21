@@ -1,4 +1,5 @@
 require "plectrum/theory/version"
+require "plectrum/theory/binary_scale"
 
 module Plectrum
   module Theory
