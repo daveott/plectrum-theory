@@ -1,5 +1,5 @@
 require "plectrum/theory/version"
-require "plectrum/theory/binary_scale"
+require "plectrum/theory/tone_bitmask"
 
 module Plectrum
   module Theory
