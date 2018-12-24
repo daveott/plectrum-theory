@@ -1,4 +1,6 @@
 require "plectrum/theory/version"
+require "plectrum/theory/pitch"
+require "plectrum/theory/scale"
 require "plectrum/theory/tone_bitmask"
 
 module Plectrum
