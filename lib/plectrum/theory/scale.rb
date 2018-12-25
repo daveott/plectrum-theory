@@ -10,7 +10,7 @@ module Plectrum
       end
 
       def spell
-        bitmask.each_char do |bit|
+        bitmask.each do |bit|
           if bit == '1'
             pitch = Pitch.new(step: spelling.last).next
             spelling << pitch unless complete?
@@ -24,7 +24,7 @@ module Plectrum
       end
 
       def complete?
-        spelling.size == (bitmask.count("1").size - 1)
+        spelling.size == (bitmask.length - 1)
       end
     end
   end

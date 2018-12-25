@@ -26,8 +26,8 @@ RSpec.describe Plectrum::Theory::ToneBitmask do
   end
 
   describe '.find' do
-    it 'returns the binary representation of the given integer' do
-      expect(Plectrum::Theory::ToneBitmask.find(2741)).to eq('101010110101')
+    it 'returns the tone bitmask for the given integer' do
+      expect(Plectrum::Theory::ToneBitmask.find(2741).bitmask).to eq('101010110101')
     end
 
     it 'returns an error if the number is not in the power set' do
