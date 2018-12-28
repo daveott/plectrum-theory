@@ -21,7 +21,7 @@ module Plectrum
 
       def resolve_enharmonic!(previous)
         self.tone = enharmonics.find do |enharmonic|
-          enharmonic.start_with?(previous.codepoints.first.chr.next)
+          enharmonic.start_with?(previous.codepoints.first.chr.next) || 'A'
         end
       end
 
