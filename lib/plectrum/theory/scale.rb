@@ -12,17 +12,10 @@ module Plectrum
       end
 
       def spell
-        scale_tones.map do |tone|
-          enharmonics = tone.include?('/') && tone.split('/')
-          if enharmonics
-            spelling << enharmonics.find do |enharmonic|
-              enharmonic.start_with?(spelling.last.codepoints.first.chr.next)
-            end
-          else
-            spelling << tone
-          end
+        scale_tones.map.with_object(spelling) do |tone, spelling|
+          tone = Tone.new(tone, spelling: spelling)
+          spelling << tone.with_enharmonics
         end
-        spelling
       end
 
       def chromatic_tones
@@ -39,6 +32,37 @@ module Plectrum
 
       def complete?
         spelling.size == (bitmask.length - 1)
+      end
+    end
+
+    class Tone
+      attr_reader :spelling, :tone
+
+      def initialize(tone, spelling: nil)
+        @tone = tone
+        @spelling = spelling
+      end
+
+      def enharmonic?
+        tone.include?('/')
+      end
+
+      def enharmonics
+        tone.split('/')
+      end
+
+      def with_enharmonics
+        enharmonic? ? select_enharmonic : to_s
+      end
+
+      def select_enharmonic
+        enharmonics.find do |enharmonic|
+          enharmonic.start_with?(spelling.last.codepoints.first.chr.next)
+        end
+      end
+
+      def to_s
+        tone
       end
     end
   end
