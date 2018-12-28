@@ -4,7 +4,7 @@ RSpec.describe Plectrum::Theory::Pitch do
       subject { described_class.new(step: 'C') }
 
       it 'returns the next pitch' do
-        expect(subject.next(1)).to eq('D')
+        expect(subject.next(1)).to eq('C#/Db')
       end
     end
 
@@ -12,7 +12,7 @@ RSpec.describe Plectrum::Theory::Pitch do
       subject { described_class.new(step: 'G') }
 
       it 'returns the next pitch' do
-        expect(subject.next(1)).to eq('A')
+        expect(subject.next(1)).to eq('G#/Ab')
       end
     end
   end
@@ -30,7 +30,7 @@ RSpec.describe Plectrum::Theory::Pitch do
       subject { described_class.new(step: 'A') }
 
       it 'returns the previous pitch' do
-        expect(subject.previous(1)).to eq('G')
+        expect(subject.previous(1)).to eq('G#/Ab')
       end
     end
   end

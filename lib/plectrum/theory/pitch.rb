@@ -3,6 +3,8 @@ module Plectrum
     class Pitch
       attr_reader :step, :alter, :octave
 
+      STEPS = %w(C C#/Db D D#/Eb E F F#/Gb G G#/Ab A A#/Bb B C C#/Db D D#/Eb E F F#/Gb G G#/Ab A A#/Bb B)
+
       def initialize(step: 'C', alter: 0, octave: 4)
         @step = step
         @alter = alter
@@ -10,18 +12,11 @@ module Plectrum
       end
 
       def next(distance=1)
-        pluck(distance: distance)
+        STEPS[STEPS.index(step) + (distance % 7), 1].last
       end
 
       def previous(distance=1)
-        pluck(distance: distance, reverse: true)
-      end
-
-      private
-      def pluck(steps: 'CDEFGABCDEFGABC', distance: 1, reverse: false)
-        steps = steps.reverse if reverse
-        distance = distance % 7
-        steps[steps.index(step) + distance, 1]
+        STEPS[STEPS.index(step) - (distance % 7), 1].last
       end
     end
   end

@@ -35,6 +35,10 @@ module Plectrum
       def length
         bitmask.count("1").size
       end
+
+      def to_a
+        bitmask.split('')
+      end
     end
   end
 end
