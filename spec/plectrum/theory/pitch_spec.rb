@@ -1,7 +1,7 @@
 RSpec.describe Plectrum::Theory::Pitch do
   describe '#next' do
     context 'C' do
-      subject { described_class.new(step: 'C') }
+      subject { described_class.new(step: 'B#/C') }
 
       it 'returns C#/Db as the next pitch' do
         expect(subject.next(1)).to eq('C#/Db')
@@ -19,7 +19,7 @@ RSpec.describe Plectrum::Theory::Pitch do
 
   describe '#previous' do
     context 'C' do
-      subject { described_class.new(step: 'C') }
+      subject { described_class.new(step: 'B#/C') }
 
       it 'returns B/Cb as the previous pitch' do
         expect(subject.previous(1)).to eq('B/Cb')

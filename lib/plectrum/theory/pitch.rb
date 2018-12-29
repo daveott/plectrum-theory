@@ -3,7 +3,7 @@ module Plectrum
     class Pitch
       attr_reader :step, :alter, :octave
 
-      STEPS = %w(C C#/Db D D#/Eb E E#/F F#/Gb G G#/Ab A A#/Bb B/Cb) * 2
+      STEPS = %w(B#/C C#/Db D D#/Eb E E#/F F#/Gb G G#/Ab A A#/Bb B/Cb) * 2
 
       def initialize(step: 'C', alter: 0, octave: 4)
         @step = step
