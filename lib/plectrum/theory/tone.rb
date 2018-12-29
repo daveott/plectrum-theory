@@ -17,9 +17,7 @@ module Plectrum
 
       def resolve_enharmonic!(previous)
         self.tone = enharmonics.find do |enharmonic|
-          enharmonic.include?(previous.codepoints.first.chr.next)
-        end || enharmonics.find do |enharmonic|
-          enharmonic.start_with?('A')
+          enharmonic.include?(Alphabet.next(previous))
         end
       end
 
@@ -27,6 +25,13 @@ module Plectrum
         tone
       end
     end
+
+    class Alphabet
+      NOTES = %w(C D E F G A B) * 2
+
+      def self.next(previous)
+        NOTES[NOTES.index(previous.gsub(/b|#/,'')) + 1]
+      end
+    end
   end
 end
-

@@ -21,8 +21,8 @@ RSpec.describe Plectrum::Theory::Pitch do
     context 'C' do
       subject { described_class.new(step: 'C') }
 
-      it 'returns B as the previous pitch' do
-        expect(subject.previous(1)).to eq('B')
+      it 'returns B/Cb as the previous pitch' do
+        expect(subject.previous(1)).to eq('B/Cb')
       end
     end
 

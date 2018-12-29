@@ -55,5 +55,13 @@ RSpec.describe Plectrum::Theory::Scale do
         expect(subject.spell).to eq(%w(F# G# A# B C# D# E#))
       end
     end
+
+    context 'Gb Major' do
+      subject { described_class.new(root: 'Gb', number: 2741) }
+
+      it 'spells the scale' do
+        expect(subject.spell).to eq(%w(Gb Ab Bb Cb Db Eb F))
+      end
+    end
   end
 end
