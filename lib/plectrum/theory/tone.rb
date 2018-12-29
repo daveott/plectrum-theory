@@ -15,13 +15,11 @@ module Plectrum
         tone.split('/')
       end
 
-      def with_enharmonics
-        enharmonic? ? select_enharmonic : to_s
-      end
-
       def resolve_enharmonic!(previous)
         self.tone = enharmonics.find do |enharmonic|
-          enharmonic.start_with?(previous.codepoints.first.chr.next) || 'A'
+          enharmonic.include?(previous.codepoints.first.chr.next)
+        end || enharmonics.find do |enharmonic|
+          enharmonic.start_with?('A')
         end
       end
 

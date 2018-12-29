@@ -7,11 +7,11 @@ module Plectrum
         @number = number
         @root = root
         @bitmask = ToneBitmask.find(number)
-        @spelling = []
+        @spelling = [root]
       end
 
       def spell
-        to_a.map.with_object(spelling) do |tone, spelling|
+        to_a.drop(1).map.with_object(spelling) do |tone, spelling|
           tone = Tone.new(tone)
           tone.resolve_enharmonic!(spelling.last) if tone.enharmonic?
           spelling << tone.to_s
@@ -19,7 +19,9 @@ module Plectrum
       end
 
       def chromatic_tones
-        Pitch::STEPS[Pitch::STEPS.index(root),12]
+        Pitch::STEPS[Pitch::STEPS.index do |t|
+          t.split('/').include?(root)
+        end,12]
       end
 
       def to_a
