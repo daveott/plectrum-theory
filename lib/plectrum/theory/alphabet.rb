@@ -16,6 +16,11 @@ module Plectrum
         @previous ||= strip_accidentals(value)
       end
 
+      def previous_index
+        @previous_index ||= NOTES.index(previous)
+      end
+
+
       def enharmonics=(values)
         @enharmonics ||= values.map do |value|
           strip_accidentals(value)
@@ -23,17 +28,11 @@ module Plectrum
       end
 
       def next
-        previous_index = NOTES.index(previous)
-        if enharmonics.any?
-          i = 0
-          while i < NOTES.size
-            i += 1
-            if enharmonics.include?(NOTES[previous_index+i])
-              return NOTES[previous_index+i]
-            end
-          end
-        end
-        NOTES[previous_index+1]
+        for i in 1..NOTES.size
+          note = NOTES[previous_index + i]
+          return note if enharmonics.include?(note)
+        end if enharmonics.any?
+        NOTES[previous_index + 1]
       end
 
       private

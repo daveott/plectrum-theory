@@ -17,7 +17,10 @@ module Plectrum
 
       def resolve_enharmonic!(previous)
         self.tone = enharmonics.find do |enharmonic|
-          enharmonic.include?(Alphabet.new(previous, enharmonics: enharmonics).next)
+          enharmonic.include?(Alphabet.new(
+            previous,
+            enharmonics: enharmonics
+          ).next)
         end
       end
 
