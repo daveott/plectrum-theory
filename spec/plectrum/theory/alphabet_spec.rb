@@ -1,18 +1,18 @@
 RSpec.describe Plectrum::Theory::Alphabet do
   describe '.next' do
     context 'a scale of consecutive notes' do
-      subject { described_class.next('C') }
+      subject { described_class.new('C') }
 
       it 'returns the next scale degree' do
-        expect(subject).to eq('D')
+        expect(subject.next).to eq('D')
       end
     end
 
     context 'a scale of non-consecutive notes' do
-      subject { described_class.next('G#', enharmonics: ['B', 'Cb']) }
+      subject { described_class.new('G#', enharmonics: ['B', 'Cb']) }
 
       it 'returns the next scale degree' do
-        expect(subject).to eq('B')
+        expect(subject.next).to eq('B')
       end
     end
   end
