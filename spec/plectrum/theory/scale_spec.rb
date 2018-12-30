@@ -6,6 +6,10 @@ RSpec.describe Plectrum::Theory::Scale do
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(C D E F G A B))
       end
+
+      it 'is a heptatonic scale' do
+        expect(subject.type).to eq('heptatonic')
+      end
     end
 
     context 'G Major' do
@@ -13,6 +17,10 @@ RSpec.describe Plectrum::Theory::Scale do
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(G A B C D E F#))
+      end
+
+      it 'is a heptatonic scale' do
+        expect(subject.type).to eq('heptatonic')
       end
     end
 
@@ -22,6 +30,10 @@ RSpec.describe Plectrum::Theory::Scale do
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(D E F# G A B C#))
       end
+
+      it 'is a heptatonic scale' do
+        expect(subject.type).to eq('heptatonic')
+      end
     end
 
     context 'A Major' do
@@ -29,6 +41,10 @@ RSpec.describe Plectrum::Theory::Scale do
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(A B C# D E F# G#))
+      end
+
+      it 'is a heptatonic scale' do
+        expect(subject.type).to eq('heptatonic')
       end
     end
 
@@ -38,6 +54,10 @@ RSpec.describe Plectrum::Theory::Scale do
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(E F# G# A B C# D#))
       end
+
+      it 'is a heptatonic scale' do
+        expect(subject.type).to eq('heptatonic')
+      end
     end
 
     context 'B Major' do
@@ -45,6 +65,10 @@ RSpec.describe Plectrum::Theory::Scale do
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(B C# D# E F# G# A#))
+      end
+
+      it 'is a heptatonic scale' do
+        expect(subject.type).to eq('heptatonic')
       end
     end
 
@@ -54,6 +78,10 @@ RSpec.describe Plectrum::Theory::Scale do
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(F# G# A# B C# D# E#))
       end
+
+      it 'is a heptatonic scale' do
+        expect(subject.type).to eq('heptatonic')
+      end
     end
 
     context 'Gb Major' do
@@ -61,6 +89,10 @@ RSpec.describe Plectrum::Theory::Scale do
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(Gb Ab Bb Cb Db Eb F))
+      end
+
+      it 'is a heptatonic scale' do
+        expect(subject.type).to eq('heptatonic')
       end
     end
 
@@ -70,6 +102,10 @@ RSpec.describe Plectrum::Theory::Scale do
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(Db Eb F Gb Ab Bb C))
       end
+
+      it 'is a heptatonic scale' do
+        expect(subject.type).to eq('heptatonic')
+      end
     end
 
     context 'C# Major' do
@@ -77,6 +113,10 @@ RSpec.describe Plectrum::Theory::Scale do
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(C# D# E# F# G# A# B#))
+      end
+
+      it 'is a heptatonic scale' do
+        expect(subject.type).to eq('heptatonic')
       end
     end
 
@@ -86,6 +126,10 @@ RSpec.describe Plectrum::Theory::Scale do
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(Ab Bb C Db Eb F G))
       end
+
+      it 'is a heptatonic scale' do
+        expect(subject.type).to eq('heptatonic')
+      end
     end
 
     context 'Eb Major' do
@@ -93,6 +137,10 @@ RSpec.describe Plectrum::Theory::Scale do
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(Eb F G Ab Bb C D))
+      end
+
+      it 'is a heptatonic scale' do
+        expect(subject.type).to eq('heptatonic')
       end
     end
 
@@ -102,6 +150,10 @@ RSpec.describe Plectrum::Theory::Scale do
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(Bb C D Eb F G A))
       end
+
+      it 'is a heptatonic scale' do
+        expect(subject.type).to eq('heptatonic')
+      end
     end
 
     context 'F Major' do
@@ -109,6 +161,10 @@ RSpec.describe Plectrum::Theory::Scale do
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(F G A Bb C D E))
+      end
+
+      it 'is a heptatonic scale' do
+        expect(subject.type).to eq('heptatonic')
       end
     end
 

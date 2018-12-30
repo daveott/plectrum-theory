@@ -1,3 +1,4 @@
+require "ostruct"
 require "plectrum/theory/version"
 require "plectrum/theory/alphabet"
 require "plectrum/theory/pitch"
