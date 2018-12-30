@@ -23,7 +23,15 @@ module Plectrum
       end
 
       def type
-        ScaleType.find(to_a.size).name
+        ScaleType.find(to_a.size)
+      end
+
+      def heptatonic?
+        type.heptatonic?
+      end
+
+      def pentatonic?
+        type.pentatonic?
       end
 
       def to_a
@@ -43,6 +51,14 @@ module Plectrum
 
       def self.find(num_tones)
         new(name: TYPES[num_tones])
+      end
+
+      def heptatonic?
+        name == 'heptatonic'
+      end
+
+      def pentatonic?
+        name == 'pentatonic'
       end
     end
   end

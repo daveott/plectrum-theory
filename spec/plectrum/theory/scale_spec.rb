@@ -8,7 +8,7 @@ RSpec.describe Plectrum::Theory::Scale do
       end
 
       it 'is a heptatonic scale' do
-        expect(subject.type).to eq('heptatonic')
+        expect(subject.heptatonic?).to be true
       end
     end
 
@@ -20,7 +20,7 @@ RSpec.describe Plectrum::Theory::Scale do
       end
 
       it 'is a heptatonic scale' do
-        expect(subject.type).to eq('heptatonic')
+        expect(subject.heptatonic?).to be true
       end
     end
 
@@ -32,7 +32,7 @@ RSpec.describe Plectrum::Theory::Scale do
       end
 
       it 'is a heptatonic scale' do
-        expect(subject.type).to eq('heptatonic')
+        expect(subject.heptatonic?).to be true
       end
     end
 
@@ -44,7 +44,7 @@ RSpec.describe Plectrum::Theory::Scale do
       end
 
       it 'is a heptatonic scale' do
-        expect(subject.type).to eq('heptatonic')
+        expect(subject.heptatonic?).to be true
       end
     end
 
@@ -56,7 +56,7 @@ RSpec.describe Plectrum::Theory::Scale do
       end
 
       it 'is a heptatonic scale' do
-        expect(subject.type).to eq('heptatonic')
+        expect(subject.heptatonic?).to be true
       end
     end
 
@@ -68,7 +68,7 @@ RSpec.describe Plectrum::Theory::Scale do
       end
 
       it 'is a heptatonic scale' do
-        expect(subject.type).to eq('heptatonic')
+        expect(subject.heptatonic?).to be true
       end
     end
 
@@ -80,7 +80,7 @@ RSpec.describe Plectrum::Theory::Scale do
       end
 
       it 'is a heptatonic scale' do
-        expect(subject.type).to eq('heptatonic')
+        expect(subject.heptatonic?).to be true
       end
     end
 
@@ -92,7 +92,7 @@ RSpec.describe Plectrum::Theory::Scale do
       end
 
       it 'is a heptatonic scale' do
-        expect(subject.type).to eq('heptatonic')
+        expect(subject.heptatonic?).to be true
       end
     end
 
@@ -104,7 +104,7 @@ RSpec.describe Plectrum::Theory::Scale do
       end
 
       it 'is a heptatonic scale' do
-        expect(subject.type).to eq('heptatonic')
+        expect(subject.heptatonic?).to be true
       end
     end
 
@@ -116,7 +116,7 @@ RSpec.describe Plectrum::Theory::Scale do
       end
 
       it 'is a heptatonic scale' do
-        expect(subject.type).to eq('heptatonic')
+        expect(subject.heptatonic?).to be true
       end
     end
 
@@ -128,7 +128,7 @@ RSpec.describe Plectrum::Theory::Scale do
       end
 
       it 'is a heptatonic scale' do
-        expect(subject.type).to eq('heptatonic')
+        expect(subject.heptatonic?).to be true
       end
     end
 
@@ -140,7 +140,7 @@ RSpec.describe Plectrum::Theory::Scale do
       end
 
       it 'is a heptatonic scale' do
-        expect(subject.type).to eq('heptatonic')
+        expect(subject.heptatonic?).to be true
       end
     end
 
@@ -152,7 +152,7 @@ RSpec.describe Plectrum::Theory::Scale do
       end
 
       it 'is a heptatonic scale' do
-        expect(subject.type).to eq('heptatonic')
+        expect(subject.heptatonic?).to be true
       end
     end
 
@@ -164,7 +164,7 @@ RSpec.describe Plectrum::Theory::Scale do
       end
 
       it 'is a heptatonic scale' do
-        expect(subject.type).to eq('heptatonic')
+        expect(subject.heptatonic?).to be true
       end
     end
 
@@ -176,7 +176,7 @@ RSpec.describe Plectrum::Theory::Scale do
       end
 
       it 'is a pentatonic scale' do
-        expect(subject.type).to eq('pentatonic')
+        expect(subject.pentatonic?).to be true
       end
     end
 
@@ -188,7 +188,7 @@ RSpec.describe Plectrum::Theory::Scale do
       end
 
       it 'is a pentatonic scale' do
-        expect(subject.type).to eq('pentatonic')
+        expect(subject.pentatonic?).to be true
       end
     end
 
@@ -197,6 +197,10 @@ RSpec.describe Plectrum::Theory::Scale do
 
       xit 'spells the scale' do
         expect(subject.spell).to eq(%w(A C D E G))
+      end
+
+      it 'is a pentatonic scale' do
+        expect(subject.pentatonic?).to be true
       end
     end
 
@@ -208,7 +212,7 @@ RSpec.describe Plectrum::Theory::Scale do
       end
 
       it 'is a pentatonic scale' do
-        expect(subject.type).to eq('pentatonic')
+        expect(subject.pentatonic?).to be true
       end
     end
 
@@ -217,6 +221,10 @@ RSpec.describe Plectrum::Theory::Scale do
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(E G A B D))
+      end
+
+      it 'is a pentatonic scale' do
+        expect(subject.pentatonic?).to be true
       end
     end
 
@@ -228,7 +236,7 @@ RSpec.describe Plectrum::Theory::Scale do
       end
 
       it 'is a pentatonic scale' do
-        expect(subject.type).to eq('pentatonic')
+        expect(subject.pentatonic?).to be true
       end
     end
 
@@ -237,6 +245,10 @@ RSpec.describe Plectrum::Theory::Scale do
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(B D E F# A))
+      end
+
+      it 'is a pentatonic scale' do
+        expect(subject.pentatonic?).to be true
       end
     end
 
@@ -248,7 +260,7 @@ RSpec.describe Plectrum::Theory::Scale do
       end
 
       it 'is a pentatonic scale' do
-        expect(subject.type).to eq('pentatonic')
+        expect(subject.pentatonic?).to be true
       end
     end
 
@@ -260,7 +272,7 @@ RSpec.describe Plectrum::Theory::Scale do
       end
 
       it 'is a pentatonic scale' do
-        expect(subject.type).to eq('pentatonic')
+        expect(subject.pentatonic?).to be true
       end
     end
   end
