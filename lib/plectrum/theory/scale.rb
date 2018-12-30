@@ -39,7 +39,8 @@ module Plectrum
 
     class ScaleType < OpenStruct
       TYPES = {
-        7 => 'heptatonic'
+        7 => 'heptatonic',
+        5 => 'pentatonic'
       }
 
       def self.find(num_tones)

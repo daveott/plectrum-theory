@@ -174,6 +174,10 @@ RSpec.describe Plectrum::Theory::Scale do
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(C D E G A))
       end
+
+      it 'is a pentatonic scale' do
+        expect(subject.type).to eq('pentatonic')
+      end
     end
 
     context 'E Major Pentatonic' do
@@ -181,6 +185,10 @@ RSpec.describe Plectrum::Theory::Scale do
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(E F# G# B C#))
+      end
+
+      it 'is a pentatonic scale' do
+        expect(subject.type).to eq('pentatonic')
       end
     end
 
