@@ -1,4 +1,5 @@
 require "plectrum/theory/version"
+require "plectrum/theory/alphabet"
 require "plectrum/theory/pitch"
 require "plectrum/theory/scale"
 require "plectrum/theory/tone"
