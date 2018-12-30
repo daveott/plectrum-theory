@@ -1,22 +1,53 @@
 module Plectrum
   module Theory
     class Pitch
-      attr_reader :step, :alter, :octave
+      attr_reader :name, :context
 
-      STEPS = %w(B#/C C#/Db D D#/Eb E E#/F F#/Gb G G#/Ab A A#/Bb B/Cb) * 2
+      NAMES = %w(B#/C C#/Db D D#/Eb E E#/F F#/Gb G G#/Ab A A#/Bb B/Cb) * 2
 
-      def initialize(step: 'C', alter: 0, octave: 4)
-        @step = step
-        @alter = alter
-        @octave = octave
+      def initialize(name: 'C', context: nil)
+        @name = name
+        @context = context
+      end
+
+      def enharmonic?
+        name.include?('/')
+      end
+
+      def enharmonics
+        name.split('/')
+      end
+
+      def naturals_of(values)
+        @naturals_of ||= values.map do |value|
+          strip_accidentals(value)
+        end
       end
 
       def next(distance=1)
-        STEPS[STEPS.index(step) + (distance % 7), 1].last
+        NAMES[NAMES.index(name) + (distance % 7), 1].last
       end
 
       def previous(distance=1)
-        STEPS[STEPS.index(step) - (distance % 7), 1].last
+        NAMES[NAMES.index(name) - (distance % 7), 1].last
+      end
+
+      def to_s
+        resolve_enharmonic(context.spelling.last)
+      end
+
+      def resolve_enharmonic(previous)
+        enharmonics.find do |enharmonic|
+          enharmonic.include?(Alphabet.new(
+            strip_accidentals(previous),
+            enharmonics: naturals_of(enharmonics)
+          ).next)
+        end
+      end
+
+      private
+      def strip_accidentals(value)
+        value.gsub(/b|#/,'')
       end
     end
   end

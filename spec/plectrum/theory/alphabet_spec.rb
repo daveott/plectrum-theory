@@ -9,7 +9,7 @@ RSpec.describe Plectrum::Theory::Alphabet do
     end
 
     context 'a scale of non-consecutive notes' do
-      subject { described_class.new('G#', enharmonics: ['B', 'Cb']) }
+      subject { described_class.new('G', enharmonics: ['B', 'C']) }
 
       it 'returns the next scale degree' do
         expect(subject.next).to eq('B')
