@@ -8,7 +8,7 @@ module Plectrum
       NOTES = %w(C D E F G A B) * 2
 
       def initialize(previous, enharmonics: [])
-        @previous = previous
+        @previous = Utilities.strip_accidentals(previous)
         @enharmonics = enharmonics
       end
 

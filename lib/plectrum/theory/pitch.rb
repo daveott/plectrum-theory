@@ -20,7 +20,7 @@ module Plectrum
 
       def naturals_of(values)
         @naturals_of ||= values.map do |value|
-          strip_accidentals(value)
+          Utilities.strip_accidentals(value)
         end
       end
 
@@ -39,15 +39,10 @@ module Plectrum
       def resolve_enharmonic(previous)
         enharmonics.find do |enharmonic|
           enharmonic.include?(Alphabet.new(
-            strip_accidentals(previous),
+            previous,
             enharmonics: naturals_of(enharmonics)
           ).next)
         end
-      end
-
-      private
-      def strip_accidentals(value)
-        value.gsub(/b|#/,'')
       end
     end
   end

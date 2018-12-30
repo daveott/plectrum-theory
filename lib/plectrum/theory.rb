@@ -4,6 +4,7 @@ require "plectrum/theory/alphabet"
 require "plectrum/theory/pitch"
 require "plectrum/theory/scale"
 require "plectrum/theory/tone_bitmask"
+require "plectrum/theory/utilities"
 
 module Plectrum
   module Theory
