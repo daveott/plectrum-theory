@@ -10,7 +10,7 @@ module Plectrum
         @spelling = [root]
       end
 
-      def chromatic_tones
+      def chromatic_pitches
         Pitch::NAMES[Pitch::NAMES.index do |t|
           t.split('/').include?(root)
         end,12]
@@ -31,7 +31,7 @@ module Plectrum
       end
 
       def to_h
-        Hash[chromatic_tones.zip(bitmask.to_a.reverse)]
+        Hash[chromatic_pitches.zip(bitmask.to_a.reverse)]
       end
     end
 
