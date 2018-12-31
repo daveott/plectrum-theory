@@ -14,13 +14,19 @@ module Plectrum
         name.include?('/')
       end
 
+      def enharmonic_of(enharmonic)
+        NAMES.find do |name|
+          name.include?(enharmonic)
+        end.gsub(enharmonic, '').gsub('/','')
+      end
+
       def enharmonics
         name.split('/')
       end
 
       def naturals_of(values)
         @naturals_of ||= values.map do |value|
-          Utilities.strip_accidentals(value)
+          Util.naturalize(value)
         end
       end
 
@@ -37,9 +43,11 @@ module Plectrum
       end
 
       def resolve_enharmonic(previous)
-        enharmonics.find do |enharmonic|
-          enharmonic.include?(Alphabet.new(
-            previous,
+        enharmonics.find do |pitch|
+          if Interval.between(previous, pitch).augmented_second?
+            return enharmonic_of(pitch)
+          end if context.pentatonic?
+          pitch.include?(Alphabet.new(previous,
             enharmonics: naturals_of(enharmonics)
           ).next)
         end

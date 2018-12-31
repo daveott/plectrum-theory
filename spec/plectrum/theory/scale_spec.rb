@@ -195,7 +195,7 @@ RSpec.describe Plectrum::Theory::Scale do
     context 'A Minor Pentatonic' do
       subject { described_class.new(root: 'A', number: 1193) }
 
-      xit 'spells the scale' do
+      it 'spells the scale' do
         expect(subject.spell).to eq(%w(A C D E G))
       end
 
