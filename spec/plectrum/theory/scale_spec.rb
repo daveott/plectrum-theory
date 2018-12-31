@@ -443,5 +443,29 @@ RSpec.describe Plectrum::Theory::Scale do
         expect(subject.pentatonic?).to be true
       end
     end
+
+    context 'D Minor Pentatonic' do
+      subject { described_class.new(root: 'D', number: 1193) }
+
+      it 'spells the scale' do
+        expect(subject.spell).to eq(%w(D F G A C))
+      end
+
+      it 'is a pentatonic scale' do
+        expect(subject.pentatonic?).to be true
+      end
+    end
+
+    context 'D Major Pentatonic' do
+      subject { described_class.new(root: 'D', number: 661) }
+
+      it 'spells the scale' do
+        expect(subject.spell).to eq(%w(D E F# A B))
+      end
+
+      it 'is a pentatonic scale' do
+        expect(subject.pentatonic?).to be true
+      end
+    end
   end
 end
