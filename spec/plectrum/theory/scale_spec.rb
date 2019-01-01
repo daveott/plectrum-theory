@@ -168,6 +168,150 @@ RSpec.describe Plectrum::Theory::Scale do
       end
     end
 
+    context 'A Minor' do
+      subject { described_class.new(root: 'A', number: 1453) }
+
+      it 'spells the scale' do
+        expect(subject.spell).to eq(%w(A B C D E F G))
+      end
+
+      it 'is a heptatonic scale' do
+        expect(subject.heptatonic?).to be true
+      end
+    end
+
+    context 'E Minor' do
+      subject { described_class.new(root: 'E', number: 1453) }
+
+      it 'spells the scale' do
+        expect(subject.spell).to eq(%w(E F# G A B C D))
+      end
+
+      it 'is a heptatonic scale' do
+        expect(subject.heptatonic?).to be true
+      end
+    end
+
+    context 'B Minor' do
+      subject { described_class.new(root: 'B', number: 1453) }
+
+      it 'spells the scale' do
+        expect(subject.spell).to eq(%w(B C# D E F# G A))
+      end
+
+      it 'is a heptatonic scale' do
+        expect(subject.heptatonic?).to be true
+      end
+    end
+
+    context 'F# Minor' do
+      subject { described_class.new(root: 'F#', number: 1453) }
+
+      it 'spells the scale' do
+        expect(subject.spell).to eq(%w(F# G# A B C# D E))
+      end
+
+      it 'is a heptatonic scale' do
+        expect(subject.heptatonic?).to be true
+      end
+    end
+
+    context 'C# Minor' do
+      subject { described_class.new(root: 'C#', number: 1453) }
+
+      it 'spells the scale' do
+        expect(subject.spell).to eq(%w(C# D# E F# G# A B))
+      end
+
+      it 'is a heptatonic scale' do
+        expect(subject.heptatonic?).to be true
+      end
+    end
+
+    context 'G# Minor' do
+      subject { described_class.new(root: 'G#', number: 1453) }
+
+      it 'spells the scale' do
+        expect(subject.spell).to eq(%w(G# A# B C# D# E F#))
+      end
+
+      it 'is a heptatonic scale' do
+        expect(subject.heptatonic?).to be true
+      end
+    end
+
+    context 'D# Minor' do
+      subject { described_class.new(root: 'D#', number: 1453) }
+
+      it 'spells the scale' do
+        expect(subject.spell).to eq(%w(D# E# F# G# A# B C#))
+      end
+
+      it 'is a heptatonic scale' do
+        expect(subject.heptatonic?).to be true
+      end
+    end
+
+    context 'Bb Minor' do
+      subject { described_class.new(root: 'Bb', number: 1453) }
+
+      it 'spells the scale' do
+        expect(subject.spell).to eq(%w(Bb C Db Eb F Gb Ab))
+      end
+
+      it 'is a heptatonic scale' do
+        expect(subject.heptatonic?).to be true
+      end
+    end
+
+    context 'F Minor' do
+      subject { described_class.new(root: 'F', number: 1453) }
+
+      it 'spells the scale' do
+        expect(subject.spell).to eq(%w(F G Ab Bb C Db Eb))
+      end
+
+      it 'is a heptatonic scale' do
+        expect(subject.heptatonic?).to be true
+      end
+    end
+
+    context 'C Minor' do
+      subject { described_class.new(root: 'C', number: 1453) }
+
+      it 'spells the scale' do
+        expect(subject.spell).to eq(%w(C D Eb F G Ab Bb))
+      end
+
+      it 'is a heptatonic scale' do
+        expect(subject.heptatonic?).to be true
+      end
+    end
+
+    context 'G Minor' do
+      subject { described_class.new(root: 'G', number: 1453) }
+
+      it 'spells the scale' do
+        expect(subject.spell).to eq(%w(G A Bb C D Eb F))
+      end
+
+      it 'is a heptatonic scale' do
+        expect(subject.heptatonic?).to be true
+      end
+    end
+
+    context 'D Minor' do
+      subject { described_class.new(root: 'D', number: 1453) }
+
+      it 'spells the scale' do
+        expect(subject.spell).to eq(%w(D E F G A Bb C))
+      end
+
+      it 'is a heptatonic scale' do
+        expect(subject.heptatonic?).to be true
+      end
+    end
+
     context 'C Major Pentatonic' do
       subject { described_class.new(root: 'C', number: 661) }
 
