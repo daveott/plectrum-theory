@@ -324,6 +324,18 @@ RSpec.describe Plectrum::Theory::Scale do
       end
     end
 
+    context 'F# Phrygian Mode' do
+      subject { described_class.new(root: 'F#', number: 1451) }
+
+      it 'spells the scale' do
+        expect(subject.spell).to eq(%w(F# G A B C# D E))
+      end
+
+      it 'is a heptatonic scale' do
+        expect(subject.heptatonic?).to be true
+      end
+    end
+
     context 'C Major Pentatonic' do
       subject { described_class.new(root: 'C', number: 661) }
 
