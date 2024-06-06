@@ -1,5 +1,29 @@
 RSpec.describe Plectrum::Theory::Scale do
   describe '#spell' do
+    context 'E chromatic scale' do
+      subject { described_class.new(root: 'E', number: 4095) }
+
+      it 'spells the scale' do
+        expect(subject.spell).to eq(%w(E E#/F F#/Gb G G#/Ab A A#/Bb B/Cb B#/C C#/Db D D#/Eb))
+      end
+
+      it 'is a chromatic scale' do
+        expect(subject.chromatic?).to be true
+      end
+    end
+
+    context 'C# chromatic scale' do
+      subject { described_class.new(root: 'C#', number: 4095) }
+
+      it 'spells the scale' do
+        expect(subject.spell).to eq(%w(C#/Db D D#/Eb E E#/F F#/Gb G G#/Ab A A#/Bb B/Cb B#/C))
+      end
+
+      it 'is a chromatic scale' do
+        expect(subject.chromatic?).to be true
+      end
+    end
+
     context 'C Major' do
       subject { described_class.new(root: 'C', number: 2741) }
 

@@ -11,12 +11,14 @@ module Plectrum
       end
 
       def chromatic_pitches
-        Pitch::NAMES[Pitch::NAMES.index do |t|
+        pitches = Pitch::NAMES[Pitch::NAMES.index do |t|
           t.split('/').include?(root)
-        end,12]
+        end, 12]
       end
 
       def spell
+        return chromatic_pitches if chromatic?
+
         to_a.drop(1).map.with_object(spelling) do |degree, spelling|
           spelling << Pitch.new(name: degree, context: self).to_s
         end
@@ -24,6 +26,10 @@ module Plectrum
 
       def type
         ScaleType.find(to_a.size)
+      end
+
+      def chromatic?
+        type.chromatic?
       end
 
       def heptatonic?
@@ -46,7 +52,8 @@ module Plectrum
     class ScaleType < OpenStruct
       TYPES = {
         7 => 'heptatonic',
-        5 => 'pentatonic'
+        5 => 'pentatonic',
+        12 => 'chromatic'
       }
 
       def self.find(num_tones)
@@ -59,6 +66,10 @@ module Plectrum
 
       def pentatonic?
         name == 'pentatonic'
+      end
+
+      def chromatic?
+        name == 'chromatic'
       end
     end
   end
