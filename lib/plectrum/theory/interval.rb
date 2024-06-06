@@ -55,6 +55,14 @@ module Plectrum
         end[note.slice(/#|b|##|bb/)]
       end
 
+      def unison?
+        number == 'unison' && quality == 'perfect'
+      end
+
+      def minor_second?
+        number == 'second' && quality == 'minor'
+      end
+
       def major_second?
         number == 'second' && quality == 'major'
       end

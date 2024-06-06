@@ -1,5 +1,13 @@
 RSpec.describe Plectrum::Theory::Interval do
   describe '.between' do
+    context 'a perfect unison' do
+      subject { described_class.between('A', 'A') }
+
+      it 'returns the interval between the two notes' do
+        expect(subject.unison?).to be true
+      end
+    end
+
     context 'an augmented second' do
       subject { described_class.between('A', 'B#') }
 
