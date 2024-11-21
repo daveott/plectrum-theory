@@ -38,7 +38,7 @@ module Plectrum
       def next_distance(b)
         a = NOTES[NOTES.index(letter)..-1]
         distance = a[a.index(letter)..a.index(b)].size
-        [distance, DISTANCES[distance]]
+        [distance == 1 ? 0 : distance, DISTANCES[distance]]
       end
     end
   end
