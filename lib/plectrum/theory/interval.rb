@@ -3,7 +3,6 @@ require 'ostruct'
 module Plectrum
   module Theory
     class Interval < OpenStruct
-      # HOW TO IMPLEMENT 9, 11, 13?
       INTERVALS = [
         { semitones: 0, interval: 0, name: 'unison', quality: 'perfect' },
         { semitones: 1, interval: 2, name: 'second', quality: 'minor' },
@@ -21,7 +20,7 @@ module Plectrum
         { semitones: 11, interval: 7, name: 'seventh', quality: 'major' },
       ]
 
-      SEMITONES = Hash.new(0).tap do |h|
+      HALF_STEPS = Hash.new(0).tap do |h|
         h[['B','C']] = -1
         h[['E','F']] = -1
       end
@@ -38,27 +37,22 @@ module Plectrum
       end
 
       def self.between(a, b)
-        alphabet = Alphabet.new(Util.naturalize(a))
-        distance = alphabet.next_distance(Util.naturalize(b))
+        alphabet = Alphabet.new(Note.new(a).naturalize)
+        distance = alphabet.next_distance(Note.new(b).naturalize)
 
         semitones = distance.first
 
-        semitones += SEMITONES.select do |k, _|
+        semitones += HALF_STEPS.select do |k, _|
           (k - alphabet.steps_to(b).map do |note|
-            Util.naturalize(note)
+            Note.new(note).naturalize
           end).empty?
-        end.values.sum + altered_semitones(b) - altered_semitones(a)
+        end.values.sum + alterations(a, b)
         
         find_by(semitones: semitones, name: distance.last)
       end
 
-      def self.altered_semitones(note)
-        Hash.new(0).tap do |h|
-          h['#']  = 1
-          h['b']  = -1
-          h['##'] = 2
-          h['bb'] = -2
-        end[note.slice(/#|b|##|bb/)]
+      def self.alterations(a, b)
+        Note.new(b).alteration_value - Note.new(a).alteration_value
       end
 
       def unison?
