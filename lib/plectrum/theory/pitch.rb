@@ -47,6 +47,7 @@ module Plectrum
           if Interval.between(previous, pitch).augmented_second?
             return enharmonic_of(pitch)
           end if context.pentatonic?
+
           pitch.include?(Alphabet.new(previous,
             enharmonics: naturals_of(enharmonics)
           ).next)
