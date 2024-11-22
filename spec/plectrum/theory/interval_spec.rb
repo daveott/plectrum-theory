@@ -112,6 +112,14 @@ RSpec.describe Plectrum::Theory::Interval do
       end
     end
 
+    context 'a tritone' do
+      subject { described_class.between('A', 'Eb') }
+
+      it 'returns the interval between the two notes' do
+        expect(subject.tritone?).to be true
+      end
+    end
+
     context 'a perfect fifth' do
       subject { described_class.between('G', 'D') }
 

@@ -41,20 +41,14 @@ module Plectrum
         alphabet = Alphabet.new(Util.naturalize(a))
         distance = alphabet.next_distance(Util.naturalize(b))
 
-        naturalized_steps = alphabet.steps_to(b).map do |note|
-          Util.naturalize(note)
-        end
-
         semitones = distance.first
 
-        semitones += SEMITONES.select do |k,v|
-          #require 'pry'; binding.pry
-
-          (k - naturalized_steps).empty?
+        semitones += SEMITONES.select do |k, _|
+          (k - alphabet.steps_to(b).map do |note|
+            Util.naturalize(note)
+          end).empty?
         end.values.sum + altered_semitones(b) - altered_semitones(a)
         
-        #require 'pry'; binding.pry
-
         find_by(semitones: semitones, name: distance.last)
       end
 
@@ -102,6 +96,7 @@ module Plectrum
       def diminished_fifth?
         name == 'fifth' && quality == 'diminished'
       end
+      alias tritone? diminished_fifth?
 
       def perfect_fifth?
         name == 'fifth' && quality == 'perfect'
