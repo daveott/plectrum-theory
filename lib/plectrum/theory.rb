@@ -1,6 +1,8 @@
 require "ostruct"
 require "plectrum/theory/version"
 require "plectrum/theory/alphabet"
+require "plectrum/theory/fretboard"
+require "plectrum/theory/guitar_tuning"
 require "plectrum/theory/interval"
 require "plectrum/theory/key_signature"
 require "plectrum/theory/pitch"
