@@ -8,14 +8,13 @@ module Plectrum
       NOTES = %w(C D E F G A B) * 2
 
       DISTANCES = {
-          1 => 'unison',
-          2 => 'second',
-          3 => 'third',
-          4 => 'fourth',
-          5 => 'fifth',
-          6 => 'sixth',
-          7 => 'seventh',
-          8 => 'octave'
+          1 => ['unison', 0],
+          2 => ['second', 2],
+          3 => ['third', 4],
+          4 => ['fourth', 6],
+          5 => ['fifth', 8],
+          6 => ['sixth', 10],
+          7 => ['seventh', 12],
       }
 
       def initialize(letter, enharmonics: [])
@@ -38,7 +37,12 @@ module Plectrum
       def next_distance(b)
         a = NOTES[NOTES.index(letter)..-1]
         distance = a[a.index(letter)..a.index(b)].size
-        [distance == 1 ? 0 : distance, DISTANCES[distance]]
+        [distance == 1 ? 0 : DISTANCES[distance].last, DISTANCES[distance].first]
+      end
+
+      def steps_to(b)
+        a = NOTES[NOTES.index(letter)..-1]
+        a[a.index(letter)..a.index(Util.naturalize(b))]
       end
     end
   end
