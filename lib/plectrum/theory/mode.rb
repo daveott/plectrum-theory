@@ -34,11 +34,11 @@ module Plectrum
       end
 
       def key
-        spell[-index_of]
+        spell[-index]
       end
 
-      def index_of(name=nil)
-        MODES.find_index { |k, _| k == (name&.to_sym || self.name.to_sym) }
+      def index
+        MODES.find_index { |k, _| k == name.to_sym }
       end
 
       def quality
