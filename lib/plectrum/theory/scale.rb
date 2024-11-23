@@ -1,7 +1,11 @@
+require 'plectrum/theory/spellable'
+
 module Plectrum
   module Theory
     class Scale
-      attr_reader :name, :number, :root, :bitmask, :spelling
+      include Plectrum::Theory::Spellable
+
+      attr_reader :name, :number, :tonic, :bitmask, :spelling
 
       NON_ENHARMONIC_SCALES = {
         'C' => %w(C D E F G A B),
@@ -32,63 +36,18 @@ module Plectrum
       def self.sample
         new(
           number: ToneBitmask.sample.bitmask,
-          root: SCALES.keys.sample(1).first,
+          tonic: SCALES.keys.sample(1).first,
         )
       end
 
-      def initialize(number:, root:, bitmask: nil)
+      def initialize(number:, tonic:, bitmask: nil)
         @number = number
-        @root = root
+        @tonic = tonic
         @bitmask = bitmask || ToneBitmask.find(number)
-        @spelling = [root]
-        @name = [root, ToneBitmask::COMMON_TONE_BITMASKS.fetch(number, 'unknown')].join(' ')
+        @spelling = [tonic]
+        @name = [tonic, ToneBitmask::COMMON_TONE_BITMASKS.fetch(number, 'unknown')].join(' ')
       end
 
-      def chromatic_pitches
-        pitches = Pitch::NAMES[Pitch::NAMES.index do |t|
-          t.split('/').include?(root)
-        end, 12]
-      end
-
-      def spell
-        return chromatic_pitches if chromatic?
-
-        to_a.drop(1).map.with_object(spelling) do |degree, spelling|
-          spelling << Pitch.new(name: degree, context: self).to_s
-        end
-      end
-
-      def type
-        ScaleType.find(to_a.size)
-      end
-
-      def chromatic?
-        type.chromatic?
-      end
-
-      def heptatonic?
-        type.heptatonic?
-      end
-
-      def hexatonic?
-        type.hexatonic?
-      end
-
-      def octatonic?
-        type.octatonic?
-      end
-
-      def pentatonic?
-        type.pentatonic?
-      end
-
-      def to_a
-        to_h.map { |key, _| key if to_h[key] == '1' }.compact
-      end
-
-      def to_h
-        Hash[chromatic_pitches.zip(bitmask.to_a.reverse)]
-      end
     end
   end
 end

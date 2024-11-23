@@ -10,6 +10,7 @@ require "plectrum/theory/note"
 require "plectrum/theory/pitch"
 require "plectrum/theory/scale"
 require "plectrum/theory/scale_type"
+require "plectrum/theory/spellable"
 require "plectrum/theory/tone_bitmask"
 require "plectrum/theory/utilities"
 

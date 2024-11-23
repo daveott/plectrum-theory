@@ -9,7 +9,7 @@ RSpec.describe Plectrum::Theory::Scale do
 
   describe '#spell' do
     context 'E chromatic scale' do
-      subject { described_class.new(root: 'E', number: 4095) }
+      subject { described_class.new(tonic: 'E', number: 4095) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(E E#/F F#/Gb G G#/Ab A A#/Bb B/Cb B#/C C#/Db D D#/Eb))
@@ -21,7 +21,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'C# chromatic scale' do
-      subject { described_class.new(root: 'C#', number: 4095) }
+      subject { described_class.new(tonic: 'C#', number: 4095) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(C#/Db D D#/Eb E E#/F F#/Gb G G#/Ab A A#/Bb B/Cb B#/C))
@@ -33,7 +33,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'C Major' do
-      subject { described_class.new(root: 'C', number: 2741) }
+      subject { described_class.new(tonic: 'C', number: 2741) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(C D E F G A B))
@@ -45,7 +45,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'G Major' do
-      subject { described_class.new(root: 'G', number: 2741) }
+      subject { described_class.new(tonic: 'G', number: 2741) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(G A B C D E F#))
@@ -57,7 +57,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'D Major' do
-      subject { described_class.new(root: 'D', number: 2741) }
+      subject { described_class.new(tonic: 'D', number: 2741) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(D E F# G A B C#))
@@ -69,7 +69,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'A Major' do
-      subject { described_class.new(root: 'A', number: 2741) }
+      subject { described_class.new(tonic: 'A', number: 2741) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(A B C# D E F# G#))
@@ -81,7 +81,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'E Major' do
-      subject { described_class.new(root: 'E', number: 2741) }
+      subject { described_class.new(tonic: 'E', number: 2741) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(E F# G# A B C# D#))
@@ -93,7 +93,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'B Major' do
-      subject { described_class.new(root: 'B', number: 2741) }
+      subject { described_class.new(tonic: 'B', number: 2741) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(B C# D# E F# G# A#))
@@ -105,7 +105,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'F# Major' do
-      subject { described_class.new(root: 'F#', number: 2741) }
+      subject { described_class.new(tonic: 'F#', number: 2741) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(F# G# A# B C# D# E#))
@@ -117,7 +117,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'Gb Major' do
-      subject { described_class.new(root: 'Gb', number: 2741) }
+      subject { described_class.new(tonic: 'Gb', number: 2741) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(Gb Ab Bb Cb Db Eb F))
@@ -129,7 +129,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'Db Major' do
-      subject { described_class.new(root: 'Db', number: 2741) }
+      subject { described_class.new(tonic: 'Db', number: 2741) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(Db Eb F Gb Ab Bb C))
@@ -141,7 +141,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'C# Major' do
-      subject { described_class.new(root: 'C#', number: 2741) }
+      subject { described_class.new(tonic: 'C#', number: 2741) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(C# D# E# F# G# A# B#))
@@ -153,7 +153,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'Ab Major' do
-      subject { described_class.new(root: 'Ab', number: 2741) }
+      subject { described_class.new(tonic: 'Ab', number: 2741) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(Ab Bb C Db Eb F G))
@@ -165,7 +165,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'Eb Major' do
-      subject { described_class.new(root: 'Eb', number: 2741) }
+      subject { described_class.new(tonic: 'Eb', number: 2741) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(Eb F G Ab Bb C D))
@@ -177,7 +177,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'Bb Major' do
-      subject { described_class.new(root: 'Bb', number: 2741) }
+      subject { described_class.new(tonic: 'Bb', number: 2741) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(Bb C D Eb F G A))
@@ -189,7 +189,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'F Major' do
-      subject { described_class.new(root: 'F', number: 2741) }
+      subject { described_class.new(tonic: 'F', number: 2741) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(F G A Bb C D E))
@@ -201,7 +201,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'A Minor' do
-      subject { described_class.new(root: 'A', number: 1453) }
+      subject { described_class.new(tonic: 'A', number: 1453) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(A B C D E F G))
@@ -213,7 +213,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'E Minor' do
-      subject { described_class.new(root: 'E', number: 1453) }
+      subject { described_class.new(tonic: 'E', number: 1453) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(E F# G A B C D))
@@ -225,7 +225,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'B Minor' do
-      subject { described_class.new(root: 'B', number: 1453) }
+      subject { described_class.new(tonic: 'B', number: 1453) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(B C# D E F# G A))
@@ -237,7 +237,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'F# Minor' do
-      subject { described_class.new(root: 'F#', number: 1453) }
+      subject { described_class.new(tonic: 'F#', number: 1453) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(F# G# A B C# D E))
@@ -249,7 +249,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'C# Minor' do
-      subject { described_class.new(root: 'C#', number: 1453) }
+      subject { described_class.new(tonic: 'C#', number: 1453) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(C# D# E F# G# A B))
@@ -261,7 +261,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'G# Minor' do
-      subject { described_class.new(root: 'G#', number: 1453) }
+      subject { described_class.new(tonic: 'G#', number: 1453) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(G# A# B C# D# E F#))
@@ -273,7 +273,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'D# Minor' do
-      subject { described_class.new(root: 'D#', number: 1453) }
+      subject { described_class.new(tonic: 'D#', number: 1453) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(D# E# F# G# A# B C#))
@@ -285,7 +285,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'Bb Minor' do
-      subject { described_class.new(root: 'Bb', number: 1453) }
+      subject { described_class.new(tonic: 'Bb', number: 1453) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(Bb C Db Eb F Gb Ab))
@@ -297,7 +297,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'F Minor' do
-      subject { described_class.new(root: 'F', number: 1453) }
+      subject { described_class.new(tonic: 'F', number: 1453) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(F G Ab Bb C Db Eb))
@@ -309,7 +309,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'C Minor' do
-      subject { described_class.new(root: 'C', number: 1453) }
+      subject { described_class.new(tonic: 'C', number: 1453) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(C D Eb F G Ab Bb))
@@ -321,7 +321,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'G Minor' do
-      subject { described_class.new(root: 'G', number: 1453) }
+      subject { described_class.new(tonic: 'G', number: 1453) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(G A Bb C D Eb F))
@@ -333,7 +333,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'D Minor' do
-      subject { described_class.new(root: 'D', number: 1453) }
+      subject { described_class.new(tonic: 'D', number: 1453) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(D E F G A Bb C))
@@ -345,7 +345,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'D Dorian Mode' do
-      subject { described_class.new(root: 'D', number: 1709) }
+      subject { described_class.new(tonic: 'D', number: 1709) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(D E F G A B C))
@@ -357,7 +357,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'F# Phrygian Mode' do
-      subject { described_class.new(root: 'F#', number: 1451) }
+      subject { described_class.new(tonic: 'F#', number: 1451) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(F# G A B C# D E))
@@ -369,7 +369,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'C Major Pentatonic' do
-      subject { described_class.new(root: 'C', number: 661) }
+      subject { described_class.new(tonic: 'C', number: 661) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(C D E G A))
@@ -381,7 +381,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'A Major Pentatonic' do
-      subject { described_class.new(root: 'A', number: 661) }
+      subject { described_class.new(tonic: 'A', number: 661) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(A B C# E F#))
@@ -393,7 +393,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'A Minor Pentatonic' do
-      subject { described_class.new(root: 'A', number: 1193) }
+      subject { described_class.new(tonic: 'A', number: 1193) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(A C D E G))
@@ -405,7 +405,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'E Major Pentatonic' do
-      subject { described_class.new(root: 'E', number: 661) }
+      subject { described_class.new(tonic: 'E', number: 661) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(E F# G# B C#))
@@ -417,7 +417,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'E Minor Pentatonic' do
-      subject { described_class.new(root: 'E', number: 1193) }
+      subject { described_class.new(tonic: 'E', number: 1193) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(E G A B D))
@@ -429,7 +429,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'B Major Pentatonic' do
-      subject { described_class.new(root: 'B', number: 661) }
+      subject { described_class.new(tonic: 'B', number: 661) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(B C# D# F# G#))
@@ -441,7 +441,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'B Minor Pentatonic' do
-      subject { described_class.new(root: 'B', number: 1193) }
+      subject { described_class.new(tonic: 'B', number: 1193) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(B D E F# A))
@@ -453,7 +453,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'F# Major Pentatonic' do
-      subject { described_class.new(root: 'F#', number: 661) }
+      subject { described_class.new(tonic: 'F#', number: 661) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(F# G# A# C# D#))
@@ -465,7 +465,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'F# Minor Pentatonic' do
-      subject { described_class.new(root: 'F#', number: 1193) }
+      subject { described_class.new(tonic: 'F#', number: 1193) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(F# A B C# E))
@@ -477,7 +477,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'C# Minor Pentatonic' do
-      subject { described_class.new(root: 'C#', number: 1193) }
+      subject { described_class.new(tonic: 'C#', number: 1193) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(C# E F# G# B))
@@ -489,7 +489,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'C# Major Pentatonic' do
-      subject { described_class.new(root: 'C#', number: 661) }
+      subject { described_class.new(tonic: 'C#', number: 661) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(C# D# E# G# A#))
@@ -501,7 +501,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'G# Minor Pentatonic' do
-      subject { described_class.new(root: 'G#', number: 1193) }
+      subject { described_class.new(tonic: 'G#', number: 1193) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(G# B C# D# F#))
@@ -513,7 +513,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'G# Major Pentatonic' do
-      subject { described_class.new(root: 'G#', number: 661) }
+      subject { described_class.new(tonic: 'G#', number: 661) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(G# A# B# D# E#))
@@ -525,7 +525,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'Eb Minor Pentatonic' do
-      subject { described_class.new(root: 'Eb', number: 1193) }
+      subject { described_class.new(tonic: 'Eb', number: 1193) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(Eb Gb Ab Bb Db))
@@ -537,7 +537,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'Eb Major Pentatonic' do
-      subject { described_class.new(root: 'Eb', number: 661) }
+      subject { described_class.new(tonic: 'Eb', number: 661) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(Eb F G Bb C))
@@ -549,7 +549,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'Bb Minor Pentatonic' do
-      subject { described_class.new(root: 'Bb', number: 1193) }
+      subject { described_class.new(tonic: 'Bb', number: 1193) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(Bb Db Eb F Ab))
@@ -561,7 +561,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'Bb Major Pentatonic' do
-      subject { described_class.new(root: 'Bb', number: 661) }
+      subject { described_class.new(tonic: 'Bb', number: 661) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(Bb C D F G))
@@ -573,7 +573,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'F Minor Pentatonic' do
-      subject { described_class.new(root: 'F', number: 1193) }
+      subject { described_class.new(tonic: 'F', number: 1193) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(F Ab Bb C Eb))
@@ -585,7 +585,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'F Major Pentatonic' do
-      subject { described_class.new(root: 'F', number: 661) }
+      subject { described_class.new(tonic: 'F', number: 661) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(F G A C D))
@@ -597,7 +597,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'C Minor Pentatonic' do
-      subject { described_class.new(root: 'C', number: 1193) }
+      subject { described_class.new(tonic: 'C', number: 1193) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(C Eb F G Bb))
@@ -609,7 +609,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'C Major Pentatonic' do
-      subject { described_class.new(root: 'C', number: 661) }
+      subject { described_class.new(tonic: 'C', number: 661) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(C D E G A))
@@ -621,7 +621,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'G Minor Pentatonic' do
-      subject { described_class.new(root: 'G', number: 1193) }
+      subject { described_class.new(tonic: 'G', number: 1193) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(G Bb C D F))
@@ -633,7 +633,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'G Major Pentatonic' do
-      subject { described_class.new(root: 'G', number: 661) }
+      subject { described_class.new(tonic: 'G', number: 661) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(G A B D E))
@@ -645,7 +645,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'D Minor Pentatonic' do
-      subject { described_class.new(root: 'D', number: 1193) }
+      subject { described_class.new(tonic: 'D', number: 1193) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(D F G A C))
@@ -657,7 +657,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'D Major Pentatonic' do
-      subject { described_class.new(root: 'D', number: 661) }
+      subject { described_class.new(tonic: 'D', number: 661) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(D E F# A B))
@@ -669,7 +669,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'C Whole Tone' do
-      subject { described_class.new(root: 'C', number: 1365) }
+      subject { described_class.new(tonic: 'C', number: 1365) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(C D E F# G# A#))
@@ -681,7 +681,7 @@ RSpec.describe Plectrum::Theory::Scale do
     end
 
     context 'C Diminished' do
-      subject { described_class.new(root: 'C', number: 2925) }
+      subject { described_class.new(tonic: 'C', number: 2925) }
 
       it 'spells the scale' do
         expect(subject.spell).to eq(%w(C D Eb F Gb Ab A B))
