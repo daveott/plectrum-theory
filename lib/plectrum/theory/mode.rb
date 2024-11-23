@@ -44,10 +44,6 @@ module Plectrum
       def quality
         MODES[name.to_sym][:quality]
       end
-
-      def pentatonic?
-        false
-      end
     end
   end
 end
