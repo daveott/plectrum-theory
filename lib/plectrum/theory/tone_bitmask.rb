@@ -14,10 +14,11 @@ module Plectrum
         1387 => 'locrian',
         2477 => 'harmonic minor',
         2733 => 'melodic minor',
-        1365 => 'whole tone',
       }
 
       UNCOMMON_TONE_BITMASKS = {
+        1365 => 'whole tone',
+        2925 => 'diminished',
         1371 => 'superlocrian',
         1389 => 'minor locrian',
         1397 => 'major locrian',

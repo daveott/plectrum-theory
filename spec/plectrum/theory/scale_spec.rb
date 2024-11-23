@@ -679,5 +679,17 @@ RSpec.describe Plectrum::Theory::Scale do
         expect(subject.hexatonic?).to be true
       end
     end
+
+    context 'C Diminished' do
+      subject { described_class.new(root: 'C', number: 2925) }
+
+      it 'spells the scale' do
+        expect(subject.spell).to eq(%w(C D Eb F Gb Ab A B))
+      end
+
+      it 'is a octatonic scale' do
+        expect(subject.octatonic?).to be true
+      end
+    end
   end
 end

@@ -74,6 +74,10 @@ module Plectrum
         type.hexatonic?
       end
 
+      def octatonic?
+        type.octatonic?
+      end
+
       def pentatonic?
         type.pentatonic?
       end
@@ -92,11 +96,16 @@ module Plectrum
         5 => 'pentatonic',
         6 => 'hexatonic',
         7 => 'heptatonic',
+        8 => 'octatonic',
         12 => 'chromatic'
       }
 
       def self.find(num_tones)
         new(name: TYPES[num_tones])
+      end
+
+      def chromatic?
+        name == 'chromatic'
       end
 
       def heptatonic?
@@ -107,12 +116,12 @@ module Plectrum
         name == 'hexatonic'
       end
 
-      def pentatonic?
-        name == 'pentatonic'
+      def octatonic?
+        name == 'octatonic'
       end
 
-      def chromatic?
-        name == 'chromatic'
+      def pentatonic?
+        name == 'pentatonic'
       end
     end
   end
