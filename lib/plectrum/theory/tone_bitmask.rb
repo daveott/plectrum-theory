@@ -5,7 +5,6 @@ module Plectrum
         661 => 'major pentatonic',
         1193 => 'minor pentatonic',
         1257 => 'blues',
-        1365 => 'whole tone',
         2741 => 'ionian',
         1709 => 'dorian',
         1451 => 'phrygian',
@@ -15,6 +14,7 @@ module Plectrum
         1387 => 'locrian',
         2477 => 'harmonic minor',
         2733 => 'melodic minor',
+        1365 => 'whole tone',
       }
 
       UNCOMMON_TONE_BITMASKS = {
