@@ -13,6 +13,12 @@ module Plectrum
         locrian: { bitmask: 1387, quality: 'diminished' },
       }
 
+      def self.sample
+        tonic = Scale::SCALES.keys.sample
+        mode = MODES.keys.sample
+        new(tonic, mode)
+      end
+
       def initialize(tonic, name)
         @tonic = tonic
         @name = name

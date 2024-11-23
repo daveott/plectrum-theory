@@ -1,5 +1,5 @@
 RSpec.describe Plectrum::Theory::Mode do
-  xdescribe '.sample' do
+  describe '.sample' do
     subject { described_class.sample }
 
     it 'returns a Mode' do
