@@ -1,6 +1,10 @@
+require 'plectrum/theory/spellable'
+
 module Plectrum
   module Theory
     class Mode
+      include Spellable
+
       attr_reader :key, :name, :tonic, :bitmask, :spelling
 
       MODES = {
@@ -29,32 +33,12 @@ module Plectrum
         @bitmask ||= ToneBitmask.find MODES[name.to_sym][:bitmask]
       end
 
-      def chromatic_pitches
-        pitches = Pitch::NAMES[Pitch::NAMES.index do |t|
-          t.split('/').include?(tonic)
-        end, 12]
-      end
-
       def key
         spell[-index_of]
       end
 
       def index_of(name=nil)
         MODES.find_index { |k, _| k == (name&.to_sym || self.name.to_sym) }
-      end
-
-      def spell
-        to_a.drop(1).map.with_object(spelling) do |degree, spelling|
-          spelling << Pitch.new(name: degree, context: self).to_s
-        end
-      end
-
-      def to_a
-        to_h.map { |key, _| key if to_h[key] == '1' }.compact
-      end
-
-      def to_h
-        Hash[chromatic_pitches.zip(bitmask.to_a.reverse)]
       end
 
       def quality
