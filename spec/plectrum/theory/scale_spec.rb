@@ -1,4 +1,12 @@
 RSpec.describe Plectrum::Theory::Scale do
+  describe '.sample' do
+    subject { described_class.sample }
+
+    it 'returns a Scale' do
+      expect(subject).to be_a(described_class)
+    end
+  end
+
   describe '#spell' do
     context 'E chromatic scale' do
       subject { described_class.new(root: 'E', number: 4095) }

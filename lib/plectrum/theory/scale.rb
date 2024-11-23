@@ -1,7 +1,7 @@
 module Plectrum
   module Theory
     class Scale
-      attr_reader :number, :root, :bitmask, :spelling
+      attr_reader :name, :number, :root, :bitmask, :spelling
 
       NON_ENHARMONIC_SCALES = {
         'C' => %w(C D E F G A B),
@@ -29,11 +29,19 @@ module Plectrum
       CIRCLE_OF_FIFTHS = NON_ENHARMONIC_SCALES.keys
       CIRCLE_OF_FOURTHS = NON_ENHARMONIC_SCALES.keys.reverse
 
-      def initialize(number:, root:, bitmask: 0)
+      def self.sample
+        new(
+          number: ToneBitmask.sample.bitmask,
+          root: SCALES.keys.sample(1).first,
+        )
+      end
+
+      def initialize(number:, root:, bitmask: nil)
         @number = number
         @root = root
-        @bitmask = ToneBitmask.find(number)
+        @bitmask = bitmask || ToneBitmask.find(number)
         @spelling = [root]
+        @name = [root, ToneBitmask::COMMON_TONE_BITMASKS.fetch(number, 'unknown')].join(' ')
       end
 
       def chromatic_pitches
