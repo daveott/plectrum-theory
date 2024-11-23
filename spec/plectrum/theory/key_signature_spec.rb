@@ -1,4 +1,12 @@
 RSpec.describe Plectrum::Theory::KeySignature do
+  describe '.sample' do
+    subject { described_class.sample }
+
+    it "returns a key signature" do
+      expect(subject).to be_a(described_class)
+    end
+  end
+
   context 'C' do
     subject { described_class.new('C') }
 

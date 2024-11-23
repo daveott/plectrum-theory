@@ -19,10 +19,18 @@ module Plectrum
         'Cb' => { accidentals: ['Bb', 'Eb', 'Ab', 'Db', 'Gb', 'Cb', 'Fb'], relative_minor: nil }
       }
 
+      QUALITIES = %w(major minor)
+
       attr_reader :name, :accidentals, :quality
 
       def self.find(key, quality='major')
         new(key, quality)
+      end
+
+      def self.sample(quality: nil)
+        quality = (QUALITIES & Array.wrap(quality)).first || QUALITIES.sample
+        name = KEY_SIGNATURES.keys.sample(1).first
+        new(name, quality)
       end
 
       def initialize(name='C', quality='major')
