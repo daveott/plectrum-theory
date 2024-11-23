@@ -70,6 +70,10 @@ module Plectrum
         type.heptatonic?
       end
 
+      def hexatonic?
+        type.hexatonic?
+      end
+
       def pentatonic?
         type.pentatonic?
       end
@@ -85,8 +89,9 @@ module Plectrum
 
     class ScaleType < OpenStruct
       TYPES = {
-        7 => 'heptatonic',
         5 => 'pentatonic',
+        6 => 'hexatonic',
+        7 => 'heptatonic',
         12 => 'chromatic'
       }
 
@@ -96,6 +101,10 @@ module Plectrum
 
       def heptatonic?
         name == 'heptatonic'
+      end
+
+      def hexatonic?
+        name == 'hexatonic'
       end
 
       def pentatonic?

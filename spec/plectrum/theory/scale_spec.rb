@@ -667,5 +667,17 @@ RSpec.describe Plectrum::Theory::Scale do
         expect(subject.pentatonic?).to be true
       end
     end
+
+    context 'C Whole Tone' do
+      subject { described_class.new(root: 'C', number: 1365) }
+
+      it 'spells the scale' do
+        expect(subject.spell).to eq(%w(C D E F# G# A#))
+      end
+
+      it 'is a hexatonic scale' do
+        expect(subject.hexatonic?).to be true
+      end
+    end
   end
 end
