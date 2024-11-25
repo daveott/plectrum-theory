@@ -23,7 +23,7 @@ module Plectrum
         strings
       end
 
-      def highlight_notes(notes=[], position: nil)
+      def highlight_notes(notes=[], position: nil, string_groups: nil)
         return matrix if notes.empty?
 
         min_fret, max_fret = if position.is_a?(Range)
@@ -32,7 +32,11 @@ module Plectrum
           [0, fret_count]
         end
 
-        matrix.each_with_index do |string|
+        valid_strings = string_groups || (0...tuning.open_string_notes.size).to_a
+
+        matrix.each_with_index do |string, string_index|
+          next unless valid_strings.include?(string_index)
+            
           string.each_with_index do |fret, fret_index|
             next unless fret_index.between?(min_fret, max_fret)
 

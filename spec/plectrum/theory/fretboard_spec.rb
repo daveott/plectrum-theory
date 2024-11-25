@@ -126,9 +126,9 @@ RSpec.describe Plectrum::Theory::Fretboard do
   end
 
   describe '#highlight_notes' do
-    context 'standard tuning' do
-      let(:tuning) { :standard }
+    let(:tuning) { :standard }
 
+    context 'standard tuning' do
       context 'with no notes' do
         it "draws the fretboard with no notes highlighted" do
           notes = subject.highlight_notes
@@ -164,6 +164,27 @@ RSpec.describe Plectrum::Theory::Fretboard do
             expect(notes.flatten.count { |n| n.include?('*') }).to eq(17)
           end
         end
+      end
+    end
+
+    context 'with string groups E B G' do
+      it "draws the fretboard with the notes highlighted" do
+        notes = subject.highlight_notes(%w(A D), string_groups: [0, 1, 2])
+        expect(notes.flatten.count { |n| n.include?('*') }).to eq(6)
+      end
+    end
+
+    context 'with string groups B G D' do
+      it "draws the fretboard with the notes highlighted" do
+        notes = subject.highlight_notes(%w(A D), string_groups: [1, 2, 3])
+        expect(notes.flatten.count { |n| n.include?('*') }).to eq(7)
+      end
+    end
+
+    context 'with string groups B G D in the 5th position' do
+      it "draws the fretboard with the notes highlighted" do
+        notes = subject.highlight_notes(%w(A C E), position: 4..7, string_groups: [1, 2, 3])
+        expect(notes.flatten.count { |n| n.include?('*') }).to eq(3)
       end
     end
   end
