@@ -32,7 +32,7 @@ module Plectrum
           [0, fret_count]
         end
 
-        matrix.each_with_index do |string, string_index|
+        matrix.each_with_index do |string|
           string.each_with_index do |fret, fret_index|
             next unless fret_index.between?(min_fret, max_fret)
 
