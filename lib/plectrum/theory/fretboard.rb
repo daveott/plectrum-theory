@@ -10,7 +10,7 @@ module Plectrum
       end
 
       def matrix
-        tuning.open_string_notes.map do |note|
+        tuning.open_string_notes.reverse.map do |note|
           [[note]].tap do |string|
             while string.size < fret_count + 1 do
               string << Pitch.new(
@@ -21,6 +21,26 @@ module Plectrum
           end
         end
         strings
+      end
+
+      def highlight_notes(notes=[], position: nil)
+        return matrix if notes.empty?
+
+        min_fret, max_fret = if position.is_a?(Range)
+          [position.begin, position.end] 
+        else
+          [0, fret_count]
+        end
+
+        matrix.each_with_index do |string, string_index|
+          string.each_with_index do |fret, fret_index|
+            next unless fret_index.between?(min_fret, max_fret)
+
+            fret.map! do |n|
+              (n.split('/') & Array(notes)).any? ? "#{n}*" : n
+            end
+          end
+        end
       end
     end
   end
