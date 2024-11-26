@@ -11,4 +11,8 @@ class GuitarTuning
       %w(E A D G B/Cb E)
     end
   end
+
+  def string_numbers
+    (0...open_string_notes.size).to_a
+  end
 end

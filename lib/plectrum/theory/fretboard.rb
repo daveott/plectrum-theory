@@ -23,32 +23,40 @@ module Plectrum
         strings
       end
 
-      def highlight_notes(notes=[], root: nil, position: nil, string_groups: nil)
+      def highlight_notes(notes=[], **options)
         return matrix if notes.empty?
 
-        min_fret, max_fret = if position.is_a?(Range)
+        string_groups = options[:string_groups] || tuning.string_numbers
+
+        matrix.each_with_index do |string, string_index|
+          next unless string_groups.include?(string_index)
+
+          string.each_with_index do |fret, fret_index|
+            next unless fret_index.between?(*fret_range(options[:position]))
+
+            fret.map! &with_annotations(notes, root: options[:root])
+          end
+        end
+      end
+
+      private
+      def with_annotations(notes, root: nil)
+        -> (fret) {
+          fret_notes = fret.split('/')
+
+          if (fret_notes & Array(notes)).any?
+            fret_notes.include?(root) ? "(#{fret}*)" : "#{fret}*"
+          else
+            fret
+          end
+        }
+      end
+
+      def fret_range(position)
+        if position.is_a?(Range)
           [position.begin, position.end] 
         else
           [0, fret_count]
-        end
-
-        valid_strings = string_groups || (0...tuning.open_string_notes.size).to_a
-
-        matrix.each_with_index do |string, string_index|
-          next unless valid_strings.include?(string_index)
-            
-          string.each_with_index do |fret, fret_index|
-            next unless fret_index.between?(min_fret, max_fret)
-
-            fret.map! do |n|
-              fret_notes = n.split('/')
-              if (fret_notes & Array(notes)).any?
-                fret_notes.include?(root) ? "(#{n}*)" : "#{n}*"
-              else
-                n
-              end
-            end
-          end
         end
       end
     end
