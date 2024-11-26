@@ -128,41 +128,39 @@ RSpec.describe Plectrum::Theory::Fretboard do
   describe '#highlight_notes' do
     let(:tuning) { :standard }
 
-    context 'standard tuning' do
-      context 'with no notes' do
-        it "draws the fretboard with no notes highlighted" do
-          notes = subject.highlight_notes
-          expect(notes.flatten.count { |n| n.include?('*') }).to eq(0)
-        end
+    context 'with no notes' do
+      it "draws the fretboard with no notes highlighted" do
+        notes = subject.highlight_notes
+        expect(notes.flatten.count { |n| n.include?('*') }).to eq(0)
       end
+    end
 
-      context 'with a single note' do
-        it "draws the fretboard with the note highlighted" do
-          notes = subject.highlight_notes("A")
-          expect(notes.flatten.count { |n| n.include?('*') }).to eq(7)
-        end
+    context 'with a single note' do
+      it "draws the fretboard with the note highlighted" do
+        notes = subject.highlight_notes("A")
+        expect(notes.flatten.count { |n| n.include?('*') }).to eq(7)
       end
+    end
 
-      context 'with multiple notes' do
+    context 'with multiple notes' do
+      it "draws the fretboard with the notes highlighted" do
+        notes = subject.highlight_notes(%w(A D))
+        expect(notes.flatten.count { |n| n.include?('*') }).to eq(14)
+      end
+    end
+
+    context 'with enharmonic notes' do
+      it "draws the fretboard with the notes highlighted" do
+        notes = subject.highlight_notes(%w(G# Ab))
+        expect(notes.flatten.count { |n| n.include?('*') }).to eq(12)
+      end
+    end
+
+    context 'with a position' do
+      context 'at the 5th fret' do
         it "draws the fretboard with the notes highlighted" do
-          notes = subject.highlight_notes(%w(A D))
-          expect(notes.flatten.count { |n| n.include?('*') }).to eq(14)
-        end
-      end
-
-      context 'with enharmonic notes' do
-        it "draws the fretboard with the notes highlighted" do
-          notes = subject.highlight_notes(%w(G# Ab))
-          expect(notes.flatten.count { |n| n.include?('*') }).to eq(12)
-        end
-      end
-
-      context 'with a position' do
-        context 'at the 5th fret' do
-          it "draws the fretboard with the notes highlighted" do
-            notes = subject.highlight_notes(%w(A B C# D E F# G#), position: 4..7)
-            expect(notes.flatten.count { |n| n.include?('*') }).to eq(17)
-          end
+          notes = subject.highlight_notes(%w(A B C# D E F# G#), position: 4..7)
+          expect(notes.flatten.count { |n| n.include?('*') }).to eq(17)
         end
       end
     end
@@ -185,6 +183,14 @@ RSpec.describe Plectrum::Theory::Fretboard do
       it "draws the fretboard with the notes highlighted" do
         notes = subject.highlight_notes(%w(A C E), position: 4..7, string_groups: [1, 2, 3])
         expect(notes.flatten.count { |n| n.include?('*') }).to eq(3)
+      end
+    end
+
+    context 'with a root note' do
+      it "draws the fretboard with the root note highlighted" do
+        notes = subject.highlight_notes(%w(A D), root: 'A')
+        expect(notes.flatten.count { |n| n.include?('D*') }).to eq(7)
+        expect(notes.flatten.count { |n| n.include?('(A*)') }).to eq(7)
       end
     end
   end

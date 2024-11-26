@@ -23,7 +23,7 @@ module Plectrum
         strings
       end
 
-      def highlight_notes(notes=[], position: nil, string_groups: nil)
+      def highlight_notes(notes=[], root: nil, position: nil, string_groups: nil)
         return matrix if notes.empty?
 
         min_fret, max_fret = if position.is_a?(Range)
@@ -41,7 +41,12 @@ module Plectrum
             next unless fret_index.between?(min_fret, max_fret)
 
             fret.map! do |n|
-              (n.split('/') & Array(notes)).any? ? "#{n}*" : n
+              fret_notes = n.split('/')
+              if (fret_notes & Array(notes)).any?
+                fret_notes.include?(root) ? "(#{n}*)" : "#{n}*"
+              else
+                n
+              end
             end
           end
         end
