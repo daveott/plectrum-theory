@@ -69,6 +69,7 @@ module Plectrum
           case semitones
           when 1 then "H" # Half step
           when 2 then "W" # Whole step
+          when 3 then "W+H" # Whole step + half step
           else "#{semitones} semitones" # Handle unexpected gaps
           end
         end
