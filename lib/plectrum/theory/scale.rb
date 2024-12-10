@@ -48,6 +48,31 @@ module Plectrum
         @name = [tonic, ToneBitmask::COMMON_TONE_BITMASKS.fetch(number, 'unknown')].join(' ')
       end
 
+      def bits
+        @bits ||= bitmask.to_i
+      end
+
+      def formula
+        steps, indices = [], []
+
+        # Collect the indices of the notes (1's)
+        bits.each_with_index { |note, i| indices << i if note == 1 }
+
+        # Calculate the steps between consecutive notes
+        indices.each_cons(2) { |i1, i2| steps << (i2 - i1) }
+
+        # Add the step from the last note back to the first (wraparound)
+        steps << (bits.size - indices.last + indices.first)
+
+        # Convert semitone distances into whole/half steps
+        steps.map do |semitones|
+          case semitones
+          when 1 then "H" # Half step
+          when 2 then "W" # Whole step
+          else "#{semitones} semitones" # Handle unexpected gaps
+          end
+        end
+      end
     end
   end
 end

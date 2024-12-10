@@ -33,7 +33,7 @@ module Plectrum
       end
 
       def self.base
-        -> (i) { i.to_s(2) }
+        -> (i) { i.to_s(2).rjust(12, '0') }
       end
 
       def self.power_set
@@ -67,6 +67,10 @@ module Plectrum
 
       def to_a
         bitmask.split('')
+      end
+
+      def to_i
+        to_a.map(&:to_i).reverse
       end
     end
   end

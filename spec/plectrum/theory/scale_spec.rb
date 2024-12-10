@@ -692,4 +692,62 @@ RSpec.describe Plectrum::Theory::Scale do
       end
     end
   end
+
+  describe '#formula' do
+    context 'Ionian' do
+      subject { described_class.new(tonic: 'C', number: 2741) }
+
+      it 'returns the formula' do
+        expect(subject.formula).to eq(["W", "W", "H", "W", "W", "W", "H"])
+      end
+    end
+
+    context 'Dorian' do
+      subject { described_class.new(tonic: 'D', number: 1709) }
+
+      it 'returns the formula' do
+        expect(subject.formula).to eq(["W", "H", "W", "W", "W", "H", "W"])
+      end
+    end
+
+    context 'Phrygian' do
+      subject { described_class.new(tonic: 'E', number: 1451) }
+
+      it 'returns the formula' do
+        expect(subject.formula).to eq(["H", "W", "W", "W", "H", "W", "W"])
+      end
+    end
+
+    context 'Lydian' do
+      subject { described_class.new(tonic: 'F', number: 2773) }
+
+      it 'returns the formula' do
+        expect(subject.formula).to eq(["W", "W", "W", "H", "W", "W", "H"])
+      end
+    end
+
+    context 'Mixolydian' do
+      subject { described_class.new(tonic: 'G', number: 1717) }
+      
+      it 'returns the formula' do
+        expect(subject.formula).to eq(["W", "W", "H", "W", "W", "H", "W"])
+      end
+    end
+
+    context 'Aeolian' do
+      subject { described_class.new(tonic: 'A', number: 1453) }
+
+      it 'returns the formula' do
+        expect(subject.formula).to eq(["W", "H", "W", "W", "H", "W", "W"])
+      end
+    end
+
+    context 'Locrian' do
+      subject { described_class.new(tonic: 'B', number: 1387) }
+
+      it 'returns the formula' do
+        expect(subject.formula).to eq(["H", "W", "W", "H", "W", "W", "W"])
+      end
+    end
+  end
 end
