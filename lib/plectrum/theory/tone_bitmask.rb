@@ -21,6 +21,7 @@ module Plectrum
       UNCOMMON_TONE_BITMASKS = {
         1365 => 'whole tone',
         2925 => 'diminished',
+        2457 => 'augmented',
         1371 => 'superlocrian',
         1389 => 'minor locrian',
         1397 => 'major locrian',
