@@ -821,5 +821,13 @@ RSpec.describe Plectrum::Theory::Scale do
         expect(subject.formula).to eq(["W+H", "H", "W+H", "H", "W+H", "H"])
       end
     end
+
+    context 'Aeolian Dominant' do
+      subject { described_class.new(tonic: 'C', number: 1461) }
+
+      it 'returns the formula' do
+        expect(subject.formula).to eq(["W", "W", "H", "W", "H", "W", "W"])
+      end
+    end
   end
 end

@@ -28,6 +28,7 @@ module Plectrum
         1459 => 'phrygian dominant',
         1493 => 'lydian minor',
         2485 => 'harmonic major',
+        1461 => 'aeolian dominant',
       }
       def self.all
         power_set.map(&base).map do |bitmask|
