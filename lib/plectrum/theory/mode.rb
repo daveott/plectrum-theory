@@ -37,12 +37,14 @@ module Plectrum
         spell[-index]
       end
 
-      def index
-        MODES.find_index { |k, _| k == name.to_sym }
-      end
-
       def quality
         MODES[name.to_sym][:quality]
+      end
+
+      private
+
+      def index
+        MODES.find_index { |k, _| k == name.to_sym }
       end
     end
   end
