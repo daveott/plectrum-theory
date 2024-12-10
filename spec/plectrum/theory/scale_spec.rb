@@ -749,5 +749,77 @@ RSpec.describe Plectrum::Theory::Scale do
         expect(subject.formula).to eq(["H", "W", "W", "H", "W", "W", "W"])
       end
     end
+
+    context 'Harmonic Minor' do
+      subject { described_class.new(tonic: 'C', number: 2477) }
+
+      it 'returns the formula' do
+        expect(subject.formula).to eq(["W", "H", "W", "W", "H", "W+H", "H"])
+      end
+    end
+
+    context 'Melodic Minor' do
+      subject { described_class.new(tonic: 'C', number: 2733) }
+
+      it 'returns the formula' do
+        expect(subject.formula).to eq(["W", "H", "W", "W", "W", "W", "H"])
+      end
+    end
+
+    context 'Whole Tone' do
+      subject { described_class.new(tonic: 'C', number: 1365) }
+
+      it 'returns the formula' do
+        expect(subject.formula).to eq(["W", "W", "W", "W", "W", "W"])
+      end
+    end
+
+    context 'Minor Pentatonic' do
+      subject { described_class.new(tonic: 'C', number: 1193) }
+
+      it 'returns the formula' do
+        expect(subject.formula).to eq(["W+H", "W", "W", "W+H", "W"])
+      end
+    end
+
+    context 'Major Pentatonic' do
+      subject { described_class.new(tonic: 'C', number: 661) }
+
+      it 'returns the formula' do
+        expect(subject.formula).to eq(["W", "W", "W+H", "W", "W+H"])
+      end
+    end
+
+    context 'Diminished' do
+      subject { described_class.new(tonic: 'C', number: 2925) }
+
+      it 'returns the formula' do
+        expect(subject.formula).to eq(["W", "H", "W", "H", "W", "H", "W", "H"])
+      end
+    end
+
+    context 'Blue Minor' do
+      subject { described_class.new(tonic: 'C', number: 1257) }
+
+      it 'returns the formula' do
+        expect(subject.formula).to eq(["W+H", "W", "H", "H", "W+H", "W"])
+      end
+    end
+
+    context 'Blue Major' do
+      subject { described_class.new(tonic: 'C', number: 669) }
+
+      it 'returns the formula' do
+        expect(subject.formula).to eq(["W", "H", "H", "W+H", "W", "W+H"])
+      end
+    end
+
+    context 'Augmented' do
+      subject { described_class.new(tonic: 'C', number: 2457) }
+
+      it 'returns the formula' do
+        expect(subject.formula).to eq(["W+H", "H", "W+H", "H", "W+H", "H"])
+      end
+    end
   end
 end
