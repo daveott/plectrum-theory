@@ -4,6 +4,8 @@ module Plectrum
       COMMON_TONE_BITMASKS = {
         661 => 'major pentatonic',
         1193 => 'minor pentatonic',
+        1257 => 'blue minor',
+        669 => 'blues major',
         1257 => 'blues',
         2741 => 'ionian',
         1709 => 'dorian',
